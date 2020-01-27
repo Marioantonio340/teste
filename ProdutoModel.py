@@ -20,9 +20,9 @@ def deletaProduto(id):
     conexao.commit()
 
 
-def alteranome(nome, id):
+def alteraNome(nome, ID):
     cursor = conexao.cursor()
-    cursor.execute("UPDATE produto SET nome = {} WHERE idproduto = {}".format(nome, id))
+    cursor.execute("UPDATE produto SET nome = {} WHERE = {}".format(nome, ID))
     conexao.commit()
 
 
@@ -41,4 +41,4 @@ def alteraQtd(qtd, id):
 def listarTodos():
     cursor = conexao.cursor()
     cursor.execute("SELECT * FROM produto")
-    return conexao.commit()
+    return cursor.fetchall()

@@ -1,7 +1,17 @@
 import ProdutoModel
+import Menus
 
+pmenu = 0
+while pmenu < 1:
+    pmenu = 1
+    opcaoMenu = Menus.menuInicial()
 
-ProdutoModel.alteranome('Marcos', 4)
-ProdutoModel.alteraPreco(33.00, 4)
-ProdutoModel.alteraQtd(77, 4)
-# print(ProdutoModel.listarTodos())
+    if opcaoMenu == '1':
+        print(ProdutoModel.listarTodos())
+    if opcaoMenu == '2':
+            print(ProdutoModel.listarTodos())
+    if opcaoMenu == '3':
+        print(ProdutoModel.listarTodos())
+    else:
+        print("Comando Inválido!")
+        pmenu = 0
