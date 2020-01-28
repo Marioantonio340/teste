@@ -24,6 +24,8 @@ while pmenu < 1:
                 ProdutoControl.editarPreco()
             elif opcaoEditar == '3':
                 ProdutoControl.editarQuantidade()
+            elif opcaoEditar == '4':
+                ProdutoControl.deletarProduto()
             elif opcaoEditar == '0':
                 peditar = 1
             else:

@@ -39,6 +39,7 @@ def menuEditarProduto():
     print("Digite 1 para editar um nome passando Id")
     print("Digite 2 para editar um preço passando Id")
     print("Digite 3 para editar uma quantidade passando Id")
+    print("Digite 4 para deletar um produto passando Id")
     print("Digite 0 para Sair")
     return input("\n\n==>")
 
@@ -99,4 +100,22 @@ def editarQuantidade():
         elif (i != 'n') and (i != 'N'):
             print(
                 "---------------------------------------------------------------------------------------\nComando Inválido!!!!!\n---------------------------------------------------------------------------------------")
+            i = 'n'
+
+
+
+def deletarProduto():
+    i = "n"
+    while (i == "n") or (i == "N"):
+        id = input("Digite o Id do produto desejado\n\n")
+        nome = ProdutoModel.verificaNome(id)
+        print("Deseja deletar {}?".format(nome))
+        i = input("s/sim n/não\n\n==>")
+        if (i == 's') or (i == 'S'):
+            ProdutoModel.deletaProduto(id)
+            print(
+                "---------------------------------------------------------------------------------------\nDeletado com sucesso!!!\n---------------------------------------------------------------------------------------")
+        elif (i != 'n') and (i != 'N'):
+            print(
+            "---------------------------------------------------------------------------------------\nComando Inválido!!!!!\n---------------------------------------------------------------------------------------")
             i = 'n'
