@@ -42,8 +42,9 @@ def alteraQtd(qtd, id):
 def listarTodos():
     cursor = conexao.cursor()
     cursor.execute("SELECT * FROM produto")
-    return cursor.fetchall()
-
+    result = cursor.fetchall()
+    for produto in result:
+        print("Id:{}  // Nome:{}  //  Preço:{}  //  Quantidade:{}\n---------------------------------------------------------------------------------------".format(produto[0], produto[1], produto[2], produto[3]))
 
 def verificaExistencia(nome1):
     cursor = conexao.cursor()
@@ -57,9 +58,9 @@ def verificaNome(id):
     cursor.execute("SELECT nome FROM produto WHERE idproduto = {}".format(id))
     rows = cursor.rowcount
     if rows == 0:
-        print("O produto escolhido não existe!\n\n")
+        print("---------------------------------------------------------------------------------------\nO produto escolhido não existe!\n---------------------------------------------------------------------------------------")
         return
     else:
-        result = str(cursor.fetchone())
-        result.replace(",", " ", 1)
-        return result
+        result = cursor.fetchone()
+
+        return result[0]

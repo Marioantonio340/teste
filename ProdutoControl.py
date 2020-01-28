@@ -21,13 +21,13 @@ def novoCadastro():
             quantidade = input("Digite a quantidade de unidades disponíveis\n\n==>")
             ProdutoModel.insereProduto(nome, preco, quantidade)
             if ProdutoModel.verificaExistencia(nome) < 1:
-                print("Ocorreu um erro ao cadastrar.\n")
+                print("---------------------------------------------------------------------------------------\nOcorreu um erro ao cadastrar.\n---------------------------------------------------------------------------------------")
             else:
-                print("Cadastro Realizado com sucesso!!!\n")
+                print("---------------------------------------------------------------------------------------\nCadastro Realizado com sucesso!!!\n---------------------------------------------------------------------------------------")
         elif nome == 0:
             validaNome = 0
         else:
-            print("Produto Já Cadastrado!!!!!\n\n\n")
+            print("---------------------------------------------------------------------------------------\nProduto Já Cadastrado!!!!!\n---------------------------------------------------------------------------------------")
 
 
 def menuEditarProduto():
@@ -44,5 +44,4 @@ def menuEditarProduto():
 def editarNome():
     id = input("Digite o Id do produto desejado\n\n")
     nome = ProdutoModel.verificaNome(id)
-
-    print(nome)
+    print("Editar{}?".format(nome))
