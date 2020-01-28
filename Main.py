@@ -21,11 +21,9 @@ while pmenu < 1:
             if opcaoEditar == '1':
                 ProdutoControl.editarNome()
             elif opcaoEditar == '2':
-                pCadastro = input("Deseja Cadastrar um novo produto?s/sim n/não\n\n==>")
-                if (pCadastro == 's') or (pCadastro == 'S'):
-                    ProdutoControl.novoCadastro()
+                ProdutoControl.editarPreco()
             elif opcaoEditar == '3':
-                ProdutoControl.editarProduto()
+                ProdutoControl.editarQuantidade()
             elif opcaoEditar == '0':
                 peditar = 1
             else:

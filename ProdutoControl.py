@@ -21,13 +21,16 @@ def novoCadastro():
             quantidade = input("Digite a quantidade de unidades disponíveis\n\n==>")
             ProdutoModel.insereProduto(nome, preco, quantidade)
             if ProdutoModel.verificaExistencia(nome) < 1:
-                print("---------------------------------------------------------------------------------------\nOcorreu um erro ao cadastrar.\n---------------------------------------------------------------------------------------")
+                print(
+                    "---------------------------------------------------------------------------------------\nOcorreu um erro ao cadastrar.\n---------------------------------------------------------------------------------------")
             else:
-                print("---------------------------------------------------------------------------------------\nCadastro Realizado com sucesso!!!\n---------------------------------------------------------------------------------------")
+                print(
+                    "---------------------------------------------------------------------------------------\nCadastro Realizado com sucesso!!!\n---------------------------------------------------------------------------------------")
         elif nome == 0:
             validaNome = 0
         else:
-            print("---------------------------------------------------------------------------------------\nProduto Já Cadastrado!!!!!\n---------------------------------------------------------------------------------------")
+            print(
+                "---------------------------------------------------------------------------------------\nProduto Já Cadastrado!!!!!\n---------------------------------------------------------------------------------------")
 
 
 def menuEditarProduto():
@@ -40,8 +43,60 @@ def menuEditarProduto():
     return input("\n\n==>")
 
 
-
 def editarNome():
-    id = input("Digite o Id do produto desejado\n\n")
-    nome = ProdutoModel.verificaNome(id)
-    print("Editar{}?".format(nome))
+    i = "n"
+    while (i == "n") or (i == "N"):
+        id = input("Digite o Id do produto desejado\n\n")
+        nome = ProdutoModel.verificaNome(id)
+        print("Deseja editar {}?".format(nome))
+        i = input("s/sim n/não\n\n==>")
+        if (i == 's') or (i == 'S'):
+            novoNome = input("Digite o novo nome\n\n==>")
+            validaNome = ProdutoModel.verificaExistencia(novoNome)
+            if validaNome < 1:
+                ProdutoModel.alteraNome(novoNome, id)
+                print(
+                    "---------------------------------------------------------------------------------------\nAlterado com sucesso!!!\n---------------------------------------------------------------------------------------")
+            else:
+                print(
+                    "---------------------------------------------------------------------------------------\nProduto Já Cadastrado!!!!!\n---------------------------------------------------------------------------------------")
+        elif (i != 'n') and (i != 'N'):
+            print(
+                "---------------------------------------------------------------------------------------\nComando Inválido!!!!!\n---------------------------------------------------------------------------------------")
+            i = 'n'
+
+
+def editarPreco():
+    i = "n"
+    while (i == "n") or (i == "N"):
+        id = input("Digite o Id do produto desejado\n\n")
+        nome = ProdutoModel.verificaNome(id)
+        print("Deseja editar o preco de {}?".format(nome))
+        i = input("s/sim n/não\n\n==>")
+        if (i == 's') or (i == 'S'):
+            novoValor = input("Digite o novo preco\n\n==>")
+            ProdutoModel.alteraPreco(novoValor, id)
+            print(
+                "---------------------------------------------------------------------------------------\nAlterado com sucesso!!!\n---------------------------------------------------------------------------------------")
+        elif (i != 'n') and (i != 'N'):
+            print(
+                "---------------------------------------------------------------------------------------\nComando Inválido!!!!!\n---------------------------------------------------------------------------------------")
+            i = 'n'
+
+
+def editarQuantidade():
+    i = "n"
+    while (i == "n") or (i == "N"):
+        id = input("Digite o Id do produto desejado\n\n")
+        nome = ProdutoModel.verificaNome(id)
+        print("Deseja editar a quantidade de {}?".format(nome))
+        i = input("s/sim n/não\n\n==>")
+        if (i == 's') or (i == 'S'):
+            novaQtd = input("Digite a nova quantidade\n\n==>")
+            ProdutoModel.alteraQtd(novaQtd, id)
+            print(
+                "---------------------------------------------------------------------------------------\nAlterado com sucesso!!!\n---------------------------------------------------------------------------------------")
+        elif (i != 'n') and (i != 'N'):
+            print(
+                "---------------------------------------------------------------------------------------\nComando Inválido!!!!!\n---------------------------------------------------------------------------------------")
+            i = 'n'
