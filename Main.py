@@ -31,7 +31,8 @@ while pmenu < 1:
             else:
                 print("---------------------------------------------------------------------------------------\nComando Inválido!!!!!\n---------------------------------------------------------------------------------------")
                 peditar = 0
-
+    elif opcaoMenu == '4':
+        ProdutoControl.pesquisa()
     elif opcaoMenu == '0':
         pmenu = 1
     else:

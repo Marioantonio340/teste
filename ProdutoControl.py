@@ -6,6 +6,7 @@ def menuInicial():
     print("Digite 1 para listar os produtos cadastrados")
     print("Digite 2 para cadastrar um novo produto")
     print("Digite 3 para editar um produto específico")
+    print("Digite 4 para pesquisar por nome")
     print("Digite 0 para Sair")
     return input("\n\n==>")
 
@@ -119,3 +120,8 @@ def deletarProduto():
             print(
             "---------------------------------------------------------------------------------------\nComando Inválido!!!!!\n---------------------------------------------------------------------------------------")
             i = 'n'
+
+
+def pesquisa():
+        nome = input("Digite o que deseja pesquisar")
+        ProdutoModel.pesquisaNome(nome)
