@@ -7,6 +7,7 @@ def menuInicial():
     print("Digite 2 para cadastrar um novo produto")
     print("Digite 3 para editar um produto específico")
     print("Digite 4 para pesquisar por nome")
+    print("Digite 5 para usar filtros em valor e quantidade")
     print("Digite 0 para Sair")
     return input("\n\n==>")
 
@@ -104,7 +105,6 @@ def editarQuantidade():
             i = 'n'
 
 
-
 def deletarProduto():
     i = "n"
     while (i == "n") or (i == "N"):
@@ -118,10 +118,53 @@ def deletarProduto():
                 "---------------------------------------------------------------------------------------\nDeletado com sucesso!!!\n---------------------------------------------------------------------------------------")
         elif (i != 'n') and (i != 'N'):
             print(
-            "---------------------------------------------------------------------------------------\nComando Inválido!!!!!\n---------------------------------------------------------------------------------------")
+                "---------------------------------------------------------------------------------------\nComando Inválido!!!!!\n---------------------------------------------------------------------------------------")
             i = 'n'
 
 
 def pesquisa():
-        nome = input("Digite o que deseja pesquisar")
-        ProdutoModel.pesquisaNome(nome)
+    nome = input("Digite o que deseja pesquisar")
+    ProdutoModel.pesquisaNome(nome)
+
+
+def filtros():
+    vfiltro = 0
+    while vfiltro < 1:
+        valor = input("Digite 1 para filtrar por preco\nDigite 2 para filtrar por quantidade\n\n==>")
+        if (valor != '1') and (valor != '2'):
+            print(
+                "---------------------------------------------------------------------------------------\nComando Inválido!!!!!\n---------------------------------------------------------------------------------------")
+        else:
+            vfiltro = 1
+
+            pmenu = 0
+            while pmenu < 1:
+
+                opcaoMenu = menuFiltro()
+
+                if opcaoMenu == '1':
+                    ProdutoModel.filtroCrescente(valor)
+                elif opcaoMenu == '2':
+                    ProdutoModel.filtroDecrescente(valor)
+                elif opcaoMenu == '3':
+                    ProdutoModel.filtroMaior(valor, input("Digite o valor de X\n\n==>"))
+                elif opcaoMenu == '4':
+                    ProdutoModel.filtroMenor(valor, input("Digite o valor de X\n\n==>"))
+                elif opcaoMenu == '5':
+                    ProdutoModel.filtroValoresEntre(valor, input("Digite o valor de X\n\n==>"), input("Digite o valor de Y\n\n==>"))
+                elif opcaoMenu == '0':
+                    pmenu = 1
+                else:
+                    print("---------------------------------------------------------------------------------------\nComando Inválido!!!!!\n---------------------------------------------------------------------------------------")
+                    pmenu = 0
+
+
+
+def menuFiltro():
+    print("Digite 1 para Filtrar em ordem crescente")
+    print("Digite 2 para Filtrar em ordem decrescente")
+    print("Digite 3 para Filtrar valores maiores que X")
+    print("Digite 4 para Filtrar valores menores que X")
+    print("Digite 5 para Filtrar valores entre X e Y")
+    print("Digite 0 para Sair")
+    return input("\n\n==>")

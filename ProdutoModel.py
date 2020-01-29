@@ -1,5 +1,4 @@
 import pymysql
-import json
 
 conexao = pymysql.connect(
     host='localhost',
@@ -72,6 +71,83 @@ def verificaNome(id):  # verifica se o nome existe, se sim retorna o mesmo
 def pesquisaNome(nome):  # realiza uma pesquisa por strig e lista em formato de tabela
     cursor = conexao.cursor()
     cursor.execute("SELECT * FROM produto WHERE nome LIKE '%{}%'".format(nome))
+    result = cursor.fetchall()
+    for produto in result:
+        print(
+            "Id:{}  // Nome:{}  //  Preço:{}  //  Quantidade:{}\n---------------------------------------------------------------------------------------".format(
+                produto[0], produto[1], produto[2], produto[3]))
+
+
+def filtroCrescente(valor):
+    if valor == '2':
+        valor = 'quantidade'
+    else:
+        valor = 'preco'
+
+    cursor = conexao.cursor()
+    cursor.execute("SELECT * FROM produto ORDER BY {} ASC".format(valor))
+    result = cursor.fetchall()
+    for produto in result:
+        print(
+            "Id:{}  // Nome:{}  //  Preço:{}  //  Quantidade:{}\n---------------------------------------------------------------------------------------".format(
+                produto[0], produto[1], produto[2], produto[3]))
+
+
+
+def filtroDecrescente(valor):
+    if valor == '2':
+        valor = 'quantidade'
+    else:
+        valor = 'preco'
+
+    cursor = conexao.cursor()
+    cursor.execute("SELECT * FROM produto ORDER BY {} DESC".format(valor))
+    result = cursor.fetchall()
+    for produto in result:
+        print(
+            "Id:{}  // Nome:{}  //  Preço:{}  //  Quantidade:{}\n---------------------------------------------------------------------------------------".format(
+                produto[0], produto[1], produto[2], produto[3]))
+
+
+def filtroMaior(valor, valor2):
+    if valor == '2':
+        valor = 'quantidade'
+    else:
+        valor = 'preco'
+
+    cursor = conexao.cursor()
+    cursor.execute("SELECT * FROM produto  WHERE {0} > {1} ORDER BY {0} ASC;".format(valor, valor2))
+    result = cursor.fetchall()
+    for produto in result:
+        print(
+            "Id:{}  // Nome:{}  //  Preço:{}  //  Quantidade:{}\n---------------------------------------------------------------------------------------".format(
+                produto[0], produto[1], produto[2], produto[3]))
+
+
+def filtroMenor(valor, valor2):
+    if valor == '2':
+        valor = 'quantidade'
+    else:
+        valor = 'preco'
+
+    cursor = conexao.cursor()
+    cursor.execute("SELECT * FROM produto  WHERE {0} < {1} ORDER BY {0} DESC;".format(valor, valor2))
+    result = cursor.fetchall()
+    for produto in result:
+        print(
+            "Id:{}  // Nome:{}  //  Preço:{}  //  Quantidade:{}\n---------------------------------------------------------------------------------------".format(
+                produto[0], produto[1], produto[2], produto[3]))
+
+
+
+def filtroValoresEntre(valor, valor2, valor3):
+    if valor == '2':
+        valor = 'quantidade'
+    else:
+        valor = 'preco'
+
+    cursor = conexao.cursor()
+    cursor.execute("SELECT * FROM produto  WHERE {0} BETWEEN {1} AND {2} ORDER BY {0} ASC;".format(valor, valor2, valor3))
     result = cursor.fetchall()
     for produto in result:
         print(

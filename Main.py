@@ -33,6 +33,8 @@ while pmenu < 1:
                 peditar = 0
     elif opcaoMenu == '4':
         ProdutoControl.pesquisa()
+    elif opcaoMenu == '5':
+        ProdutoControl.filtros()
     elif opcaoMenu == '0':
         pmenu = 1
     else:
